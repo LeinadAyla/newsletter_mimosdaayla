@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Preheader text para pré-visualização em clientes de email -->
+    <meta name="x-apple-disable-message-reformatting">
+    <span style="display: none; max-height: 0px; overflow: hidden;">
+        Novidades, promoções e dicas exclusivas para decoração de festas infantis da Mimos da Ayla. Transformando momentos em memórias inesquecíveis!
+    </span>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+        
+        // Eventos personalizados para rastreamento
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rastreamento de cliques em links
+            document.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    gtag('event', 'click', {
+                        'event_category': 'links',
+                        'event_label': this.href,
+                        'transport_type': 'beacon'
+                    });
+                });
+            });
+            
+            // Rastreamento de visualização de seções
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const sectionId = entry.target.id || entry.target.className;
+                        gtag('event', 'view_section', {
+                            'event_category': 'engagement',
+                            'event_label': sectionId
+                        });
+                    }
+                });
+            }, {threshold: 0.5});
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Newsletter mensal da Mimos da Ayla com novidades, promoções e dicas para decoração de festas infantis. Transformando momentos em memórias inesquecíveis.">
+    <meta name="keywords" content="decoração de festas, festas infantis, Mimos da Ayla, decoração temática, festas em Manaus, decoração personalizada, eventos infantis">
+    <meta name="author" content="Mimos da Ayla">
+    
+    <!-- Open Graph tags para compartilhamento em redes sociais -->
+    <meta property="og:title" content="Newsletter Mimos da Ayla - Decoração de Festas Infantis">
+    <meta property="og:description" content="Confira as novidades, promoções e dicas para decoração de festas infantis da Mimos da Ayla. Transformando momentos em memórias inesquecíveis.">
+    <meta property="og:image" content="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/images/logo.png">
+    <meta property="og:url" content="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Newsletter Mimos da Ayla - Decoração de Festas Infantis">
+    <meta name="twitter:description" content="Confira as novidades, promoções e dicas para decoração de festas infantis da Mimos da Ayla.">
+    <meta name="twitter:image" content="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/images/logo.png">
+    
+    <title>Newsletter Mimos da Ayla - <span id="newsletter-date"></span></title>
+    <style>
+        /* Fontes */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Dancing+Script:wght@700&display=swap');
+        
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 25px 15px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Saudação personalizada */
+        .saudacao {
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+            background-color: #fff5f6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .saudacao span {
+            font-weight: 500;
+            color: #ff6b81;
+        }
+        
+        /* Seções */
+        section {
+            padding: 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        section h2 {
+            font-size: 1.8rem;
+            color: #ff6b81;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        section h2:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #ff6b81;
+        }
+        
+        /* Dias da semana */
+        .destaques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        
+        .dia {
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .dia:hover {
+            transform: translateY(-5px);
+        }
+        
+        .dia h3 {
+            background-color: #ffd3d8;
+            color: #333;
+            padding: 12px 15px;
+            font-size: 1.1rem;
+        }
+        
+        .dia img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .dia-content {
+            padding: 15px;
+        }
+        
+        .dia p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .cta {
+            display: inline-block;
+            background-color: #ff6b81;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .cta:hover {
+            background-color: #ff5266;
+        }
+        
+        /* Métricas */
+        .metricas-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .metrica {
+            text-align: center;
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .metrica-numero {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b81;
+            margin-bottom: 5px;
+        }
+        
+        .metrica-texto {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        /* Campanhas */
+        .campanhas-banner {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/campanhas/natal.png') center/cover;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            color: white;
+            margin: 20px 0;
+        }
+        
+        .campanhas-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Portfólio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .portfolio-item {
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            border-radius: 50%;
+            margin: 0 10px;
+            color: #333;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background-color: #ff6b81;
+            color: white;
+        }
+        
+        .contato {
+            margin-top: 20px;
+        }
+        
+        .contato p {
+            margin-bottom: 10px;
+        }
+        
+        /* Responsividade */
+        /* Tablets em modo paisagem */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+            
+            .destaques-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+        
+        /* Tablets e smartphones grandes */
+        @media (max-width: 768px) {
+            .destaques-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .metricas-container {
+                gap: 15px;
+            }
+            
+            .metrica {
+                width: 120px;
+            }
+        }
+        
+        /* Smartphones pequenos */
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px auto;
+                border-radius: 10px;
+            }
+            
+            header {
+                padding: 15px 10px;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            section {
+                padding: 20px 15px;
+            }
+            
+            section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(1, 1fr);
+                gap: 10px;
+            }
+            
+            .portfolio-item {
+                height: 180px;
+            }
+            
+            .metrica-numero {
+                font-size: 2rem;
+            }
+            
+            .social-icons a {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                margin: 0 5px;
+            }
+            
+            .campanhas-banner {
+                padding: 25px 15px;
+            }
+            
+            .campanhas-banner h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Mimos da Ayla</h1>
+            <p>Newsletter - <span id="header-date"></span></p>
+        </header>
+        
+        <div class="saudacao">
+            Olá, <span id="nome-cliente">[Nome]</span>! Confira as novidades que preparamos para você este mês.
+        </div>
+        
+        <section class="destaques">
+            <h2>Destaques da Semana</h2>
+            <div class="destaques-grid">
+                <div class="dia" role="article">
+                    <h3>Segunda-feira: Inspiração</h3>
+                    <img src="images/destaques/segunda_inspiracao.png" alt="Decoração Completa">
+                    <div class="dia-content">
+                        <p>Cada detalhe conta uma história 💖. Qual o tema da sua próxima festa?</p>
+                        <a href="https://wa.me/5592816784422" class="cta">Agende seu orçamento!</a>
+                    </div>
+                </div>
+                
+                <div class="dia" role="article">
+                    <h3>Terça-feira: Dica Técnica</h3>
+                    <img src="images/destaques/terca_dica.png" alt="5 dicas para escolher o tema da festa">
+                    <div class="dia-content">
+                        <p>5 dicas para escolher o tema perfeito para a festa do seu pequeno!</p>
+                        <a href="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/blog" class="cta">Veja mais!</a>
+                    </div>
+                </div>
+                
+                <div class="dia" role="article">
+                    <h3>Quarta-feira: Depoimento</h3>
+                    <img src="images/destaques/quarta_depoimento.png" alt="Foi uma alegria decorar o 1º aninho da Ana Clara!">
+                    <div class="dia-content">
+                        <p>"Foi uma alegria decorar o 1º aninho da Ana Clara! Cada detalhe ficou perfeito!" - Mamãe Juliana</p>
+                        <a href="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/galeria" class="cta">Ver galeria</a>
+                    </div>
+                </div>
+                
+                <div class="dia" role="article">
+                    <h3>Quinta-feira: Reels Criativo</h3>
+                    <video width="100%" height="200" controls poster="images/destaques/quinta_reels.png">
+                        <source src="images/destaques/Untitled_mimos da ayla.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos HTML5.
+                    </video>
+                    <div class="dia-content">
+                        <p>Transformação mágica: antes e depois das nossas decorações!</p>
+                        <a href="https://www.instagram.com/mimosdaayla._/reels" class="cta">Ver vídeo</a>
+                    </div>
+                </div>
+                
+                <div class="dia" role="article">
+                    <h3>Sexta-feira: Promoção Flash</h3>
+                    <img src="images/destaques/sexta_promocao.png" alt="Sexta Mágica">
+                    <div class="dia-content">
+                        <p>✨ Sexta Mágica: Quem fechar decoração hoje ganha kit de lembrancinhas personalizadas!</p>
+                        <a href="https://wa.me/5592816784422?text=Quero%20aproveitar%20a%20promo%C3%A7%C3%A3o%20da%20Sexta%20M%C3%A1gica!" class="cta">Garanta sua oferta!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="metricas">
+            <h2>Nossos Números</h2>
+            <p class="text-center">Crescemos junto com a felicidade dos nossos clientes:</p>
+            
+            <div class="metricas-container">
+                <div class="metrica" role="presentation">
+                    <div class="metrica-numero" id="festas-numero">0</div>
+                    <div class="metrica-texto">Festas decoradas</div>
+                </div>
+                
+                <div class="metrica" role="presentation">
+                    <div class="metrica-numero" id="clientes-numero">0</div>
+                    <div class="metrica-texto">Clientes felizes</div>
+                </div>
+                
+                <div class="metrica" role="presentation">
+                    <div class="metrica-numero" id="cidades-numero">0</div>
+                    <div class="metrica-texto">Cidades atendidas</div>
+                </div>
+                
+                <div class="metrica" role="presentation">
+                    <div class="metrica-numero" id="temas-numero">0</div>
+                    <div class="metrica-texto">Temas diferentes</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="campanhas">
+            <h2>Campanhas Especiais</h2>
+            
+            <div class="campanhas-banner" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/campanhas/natal.png') center/cover;">
+                <h3>Promoção Especial</h3>
+                <p>Decore sua próxima festa com a Mimos da Ayla e ganhe 15% de desconto!</p>
+                <a href="https://wa.me/5592816784422?text=Quero%20saber%20mais%20sobre%20a%20promo%C3%A7%C3%A3o%20especial!" class="cta" style="margin-top: 15px;">Saiba mais</a>
+            </div>
+            
+            <p style="text-align: center; margin-top: 20px;">Fique atento às nossas redes sociais para mais promoções exclusivas!</p>
+        </section>
+        
+        <section class="portfolio">
+            <h2>Nosso Portfólio</h2>
+            <p style="text-align: center;">Confira alguns dos nossos trabalhos mais recentes:</p>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Circo">
+                    <img src="images/portfolio/circo1.png" alt="Decoração tema Circo">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Princesa">
+                    <img src="images/portfolio/princesa.png" alt="Decoração tema Princesa">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Safari">
+                    <img src="images/portfolio/safari.png" alt="Decoração tema Safari">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Marinheiro">
+                    <img src="images/portfolio/marinheiro.png" alt="Decoração tema Marinheiro">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Unicórnio">
+                    <img src="images/portfolio/unicornio.png" alt="Decoração tema Unicórnio">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Super-heróis">
+                    <img src="images/portfolio/super-herois.png" alt="Decoração tema Super-heróis">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Futebol">
+                    <img src="images/portfolio/futebol.png" alt="Decoração tema Futebol">
+                </div>
+                <div class="portfolio-item" role="img" aria-label="Decoração tema Jardim Encantado">
+                    <img src="images/portfolio/jardim-encantado.png" alt="Decoração tema Jardim Encantado">
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/galeria" class="cta">Ver galeria completa</a>
+            </div>
+        </section>
+        
+        <footer>
+            <h3 style="margin-bottom: 15px;"><a href="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/" style="color: #fff; text-decoration: none;">Mimos da Ayla</a></h3>
+            <p>Transformando momentos em memórias inesquecíveis</p>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/mimosdaayla._/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/arlaneaguiardasilva.silva"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/5592816784422"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://br.pinterest.com/"><i class="fab fa-pinterest"></i></a>
+            </div>
+            
+            <div class="contato">
+                <p>📱 +55 92 8167-8442</p>
+                <p>✉️ contato@mimosdaayla.com.br</p>
+                <p>📍 Manaus - Amazonas</p>
+            </div>
+            
+            <p style="margin-top: 30px;">Com carinho, Equipe Mimos da Ayla ❤️</p>
+            
+            <!-- Link de cancelamento de inscrição -->
+            <div style="margin-top: 20px; font-size: 0.8rem; color: #aaa; border-top: 1px solid #555; padding-top: 15px;">
+                <p>Você recebeu este email porque se inscreveu em nossa newsletter.</p>
+                <p>Para deixar de receber nossas comunicações, <a href="https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/cancelar-inscricao?email=[EMAIL]" style="color: #ddd;">clique aqui para cancelar sua inscrição</a>.</p>
+                <p>© 2023 Mimos da Ayla. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Versão em texto plano (oculta visualmente, mas disponível para clientes de email que bloqueiam HTML) -->
+    <div style="display:none; max-height:0px; overflow:hidden;">
+        =====================================================
+        MIMOS DA AYLA - NEWSLETTER - <span id="plain-text-date"></span>
+        =====================================================
+        
+        Olá! Confira as novidades que preparamos para você este mês.
+        
+        DESTAQUES DA SEMANA:
+        
+        * Segunda-feira: Inspiração - Cada detalhe conta uma história. Qual o tema da sua próxima festa?
+          Agende seu orçamento: https://wa.me/5592816784422
+        
+        * Terça-feira: Dica Técnica - 5 dicas para escolher o tema perfeito para a festa do seu pequeno!
+          Veja mais: https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/blog
+        
+        * Quarta-feira: Depoimento - "Foi uma alegria decorar o 1º aninho da Ana Clara! Cada detalhe ficou perfeito!" - Mamãe Juliana
+          Ver galeria: https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/galeria
+        
+        * Quinta-feira: Reels Criativo - Transformação mágica: antes e depois das nossas decorações!
+          Ver vídeo: https://www.instagram.com/mimosdaayla._/reels
+        
+        * Sexta-feira: Promoção Flash
+        
+        CAMPANHAS ESPECIAIS:
+        Promoção Especial - Decore sua próxima festa com a Mimos da Ayla e ganhe 15% de desconto!
+        Saiba mais: https://wa.me/5592816784422?text=Quero%20saber%20mais%20sobre%20a%20promo%C3%A7%C3%A3o%20especial!
+        
+        NOSSO PORTFÓLIO:
+        Confira nossos trabalhos mais recentes na galeria completa: https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/galeria
+        
+        CONTATO:
+        📱 +55 92 8167-8442
+        ✉️ contato@mimosdaayla.com.br
+        📍 Manaus - Amazonas
+        
+        Instagram: https://www.instagram.com/mimosdaayla._/
+        Facebook: https://www.facebook.com/arlaneaguiardasilva.silva
+        WhatsApp: https://wa.me/5592816784422
+        
+        Com carinho, Equipe Mimos da Ayla ❤️
+        
+        Para cancelar sua inscrição: https://eventos-virtuais-e-decor-nwkk7nl.gamma.site/cancelar-inscricao
+        © 2023 Mimos da Ayla. Todos os direitos reservados.
+    </div>
+
+    <script>
+        // Função para atualizar a data da newsletter automaticamente
+        function updateNewsletterDate() {
+            const months = [
+                "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
+                "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+            ];
+            
+            const currentDate = new Date();
+            const month = months[currentDate.getMonth()];
+            const year = currentDate.getFullYear();
+            const formattedDate = `${month} ${year}`;
+            
+            // Atualizar a data no título e no cabeçalho
+            const dateElements = document.querySelectorAll('#newsletter-date, #header-date');
+            dateElements.forEach(element => {
+                element.textContent = formattedDate;
+            });
+        }
+        
+        // Função para personalizar a newsletter com o nome do destinatário
+        function personalizarNewsletter() {
+            // Obter parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const nome = urlParams.get('nome');
+            
+            // Atualizar o nome do cliente se estiver disponível
+            if (nome) {
+                document.getElementById('nome-cliente').textContent = nome;
+            }
+        }
+        
+        // Animação de contagem para as métricas
+        function animateCounter(elementId, finalValue, duration) {
+            const element = document.getElementById(elementId);
+            let startTime = null;
+            
+            function updateCounter(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const currentValue = Math.floor(progress * finalValue);
+                element.textContent = currentValue;
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = finalValue;
+                }
+            }
+            
+            window.requestAnimationFrame(updateCounter);
+        }
+        
+        // Função para verificar se o elemento está visível na tela
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        // Função para iniciar animações quando a seção estiver visível
+        function handleScroll() {
+            const metricasSection = document.querySelector('.metricas');
+            
+            if (isElementInViewport(metricasSection)) {
+                // Iniciar contagem quando a seção estiver visível
+                animateCounter('festas-numero', 150, 2000);
+                animateCounter('clientes-numero', 120, 2000);
+                animateCounter('cidades-numero', 15, 2000);
+                animateCounter('temas-numero', 25, 2000);
+                
+                // Remover o evento de scroll após iniciar as animações
+                window.removeEventListener('scroll', handleScroll);
+            }
+        }
+        
+        // Adicionar evento de scroll para verificar quando a seção estiver visível
+        window.addEventListener('scroll', handleScroll);
+        
+        // Verificar no carregamento da página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateNewsletterDate();
+            personalizarNewsletter();
+            handleScroll();
+        });
+    </script>
+    
+    <!-- Adicionar Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+</html>
