@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
+// Importando as fontes diretamente no head do documento
+// O @import dentro do styled-components pode não funcionar corretamente em produção
 const GlobalStyles = createGlobalStyle`
-  /* Fontes */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Dancing+Script:wght@700&display=swap');
+  /* Fontes já importadas no index.html */
   
   /* Reset e estilos gerais */
   * {
