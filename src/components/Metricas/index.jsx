@@ -33,12 +33,21 @@ const Subtitle = styled.p`
 
 const MetricasGrid = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 20px;
+  gap: 20px;
+  
+  @media (min-width: 1200px) {
+    gap: 30px;
+  }
   
   @media (max-width: 768px) {
     gap: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 10px;
   }
 `;
 
@@ -47,8 +56,20 @@ const Metrica = styled.div`
   width: 150px;
   margin-bottom: 20px;
   
+  @media (min-width: 1200px) {
+    width: 180px;
+  }
+  
   @media (max-width: 768px) {
     width: 120px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 110px;
+  }
+  
+  @media (max-width: 360px) {
+    width: 100px;
   }
 `;
 
@@ -58,14 +79,38 @@ const MetricaNumero = styled(motion.div)`
   color: #ff6b81;
   margin-bottom: 5px;
   
+  @media (min-width: 1200px) {
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 2.2rem;
+  }
+  
   @media (max-width: 480px) {
     font-size: 2rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 1.8rem;
   }
 `;
 
 const MetricaTexto = styled.div`
   font-size: 0.9rem;
   color: #777;
+  
+  @media (min-width: 1200px) {
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 360px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const metricas = [

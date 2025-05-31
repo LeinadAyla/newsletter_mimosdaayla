@@ -28,10 +28,27 @@ const GlobalStyles = createGlobalStyle`
   }
   
   /* Responsividade */
+  /* Desktops grandes */
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+    }
+    
+    body {
+      font-size: 16px;
+    }
+  }
+  
   /* Tablets em modo paisagem */
   @media (max-width: 1024px) {
     .container {
       max-width: 90%;
+      margin: 20px auto;
+    }
+    
+    body {
+      font-size: 15px;
     }
   }
   
@@ -39,6 +56,19 @@ const GlobalStyles = createGlobalStyle`
   @media (max-width: 768px) {
     .container {
       max-width: 95%;
+      margin: 15px auto;
+    }
+    
+    body {
+      font-size: 14px;
+    }
+  }
+  
+  /* Smartphones médios */
+  @media (max-width: 576px) {
+    .container {
+      margin: 12px auto;
+      border-radius: 12px;
     }
   }
   
@@ -47,6 +77,22 @@ const GlobalStyles = createGlobalStyle`
     .container {
       margin: 10px auto;
       border-radius: 10px;
+    }
+    
+    body {
+      font-size: 13px;
+    }
+  }
+  
+  /* Smartphones muito pequenos */
+  @media (max-width: 360px) {
+    .container {
+      margin: 8px auto;
+      border-radius: 8px;
+    }
+    
+    body {
+      font-size: 12px;
     }
   }
 `;
